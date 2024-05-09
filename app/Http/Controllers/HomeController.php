@@ -25,9 +25,15 @@ class HomeController extends Controller
         $data->title = $request->title;
         $data->description = $request->description;
 
+        //image line is for getting image content from the form being requested/posted
         $image = $request->image;
-        $imagename=time().'.'.$image->getClientOriginalExtension();
+        // changing image name using time function
+        // $imagename=time().'.'.$image->getClientOriginalExtension();
+        $imagename = 'savedimage'.'.'.$image->getClientOriginalExtension(); 
+        // storing image and name to project folder(public)
         $request->image->move('product', $imagename);
+        // storing image to database
+        $data->image=$imagename;
 
         $data->save(); //this line saves the requested data from the form to the table "products"
 
