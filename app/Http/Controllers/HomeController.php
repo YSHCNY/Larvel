@@ -27,6 +27,7 @@ class HomeController extends Controller
 
         $image = $request->image;
         $imagename=time().'.'.$image->getClientOriginalExtension();
+        $request->image->move('product', $imagename);
 
         $data->save(); //this line saves the requested data from the form to the table "products"
 
