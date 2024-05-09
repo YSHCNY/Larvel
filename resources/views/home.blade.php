@@ -16,7 +16,8 @@
 <p class = ' italic text-gray-400 text-sm'>Crud practice for laravel</p>
 
 <div class = ' mt-4'>
-<form class = ''>
+<form action = '{{url("/add_product")}}' method = 'post' enctype="multipart/form-data">
+    @csrf
     <div>
     <label class="form-control w-full max-w-xs">
   <div class="label">

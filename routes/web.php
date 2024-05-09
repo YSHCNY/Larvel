@@ -19,3 +19,5 @@ use App\Http\Controllers\HomeController;
 // });
 
 Route::get('/', [HomeController::class,'index']);
+// route::[method]('/url',[controllername::class, 'name of class']);
+Route::post('/add_product',[HomeController::class, 'add_product']);
