@@ -15,6 +15,7 @@
 <div class="container mx-auto">
 <div class=" p-5 shadow rounded-md mt-5">
 <div>
+    <a href="{{url('')}}" class="btn btn-sm btn-ghost mb-3 border-red-500"> back</a>
 <p class="fw-bold ">All products</p>
     <p class = 'italic  text-gray-400 text-sm'>Displaying of all products</p>
 </div>
