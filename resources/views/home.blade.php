@@ -11,10 +11,13 @@
 <body>
 
 <div class = ' container flex mx-auto '>
+  
     <div class="shadow p-9 m-4  mx-auto w-auto justify-center items-center ">
 <p class = 'font-bold mb-0'>Add Product</p>
-<p class = ' italic text-gray-400 text-sm'>Crud practice for laravel</p>
-
+<p class = ' italic text-gray-400 text-sm'>Crud practice for laravel</p> 
+<div class="float-end my-3">
+<a class = 'btn btn-primary' href="{{url('show_product')}}">Show Products</a>
+</div>
 <div class = ' mt-4'>
 <form action = '{{url("/add_product")}}' method = 'post' enctype="multipart/form-data">
     @csrf
@@ -55,12 +58,17 @@
     
     <button type = 'submit' class="btn btn-neutral">Add</button>
     </div>
+    
 </form>
+
+
 </div>
 
 
 </div>
+
 </div>
+
 
     
 </body>

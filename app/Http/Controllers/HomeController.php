@@ -14,6 +14,13 @@ class HomeController extends Controller
         return view('home');
     }
 
+    public function show_product(){
+
+        // fetching product table
+        $data = Product::all();
+        return view('product', compact('data'));
+    }
+
     // a fuction opf add_product class that requests to table / db with a method of request 
     public function add_product(Request $request){
 
@@ -27,7 +34,10 @@ class HomeController extends Controller
 
         //image line is for getting image content from the form being requested/posted
         $image = $request->image;
-        // changing image name using time function
+
+        //make statement if image is empty so itll not error
+        if($image){
+         // changing image name using time function
         // $imagename=time().'.'.$image->getClientOriginalExtension();
         $imagename = 'savedimage'.'.'.$image->getClientOriginalExtension(); 
         // storing image and name to project folder(public)
@@ -35,6 +45,8 @@ class HomeController extends Controller
         // storing image to database
         $data->image=$imagename;
 
+        }
+      
         $data->save(); //this line saves the requested data from the form to the table "products"
 
         return redirect()->back(); //this refreshes data back to the same module so it doesnt redirect to contol page
