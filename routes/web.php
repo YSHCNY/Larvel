@@ -17,8 +17,10 @@ use App\Http\Controllers\HomeController;
 // Route::get('/', function () {
 //     return view('home');
 // });
-
-Route::get('/', [HomeController::class,'index']);
 // route::[method]('/url',[controllername::class, 'name of class']);
+Route::get('/', [HomeController::class,'index'])->name('home');
+
 Route::post('/add_product',[HomeController::class, 'add_product']);
-Route::get('/show_product',[HomeController::class, 'show_product']);
+Route::get('/show_product',[HomeController::class, 'show_product'])->name('all_product');
+Route::get('/delete_product/{id?}', [HomeController::class, 'delete_product']);
+Route::get('/update_product/{id?}', [HomeController::class, 'update_product'])->name('update');
