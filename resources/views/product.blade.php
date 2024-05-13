@@ -38,7 +38,9 @@
         <p class = 'text-sm capitalize'>{{$data->description}}</p>
         <div class = 'p-2 border-t mt-4'>
           <p class="text-sm text-gray-500 mb-2 italic">Action:</p>
+          <a href="{{route('display',$data->id)}}" class = 'btn btn-sm btn-accent'>View</a>
         <a href="{{route('update',$data->id)}}" class = 'btn btn-sm btn-outline btn-accent'>Edit</a>
+     
         <a onclick = "return confirm('are you sure you want to delete this?');" href="{{url('delete_product', $data->id)}}" class = 'btn btn-sm btn-outline '>Delete</a>
         </div>
         </div> 

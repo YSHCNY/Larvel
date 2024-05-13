@@ -14,6 +14,8 @@ class HomeController extends Controller
         return view('home');
     }
 
+
+  // function to fetch and get id to update view
     public function update_product($id){
         // fetch id from table products
         $product = Product::find($id);
@@ -22,7 +24,7 @@ class HomeController extends Controller
         return view ('product_update',compact('product'));
     }
 
-    
+
     // function to diusplay product
     public function show_product(){
 
@@ -78,8 +80,37 @@ class HomeController extends Controller
     }
 
 
+    public function view_product($id){
+        $data = Product::find($id);
+        return view ('display_product', compact('data'));
+    }
 
-    // function to update
+
+    public function edit_product(Request $request, $id){
+
+        $data = Product::find($id);
+        // after fetching data $data->(coloumn) compares request from $request->(input name) base on id
+        $data->title = $request->title;
+        $data->description = $request->description;
+
+        // image that is being requested is stored in $image (file input)
+        $image = $request->image;
+
+        // then $image is in a if statment to see if the image has content or none
+        if($image){
+            // the new image then is being name with the current date
+            $imagename = time().'.'.$image->getClientOriginalExtension();
+            // the request is being set to the same path of images
+            $request->image->move('product', $imagename);
+
+            // the data then is being replaced based on the new uploaded image BASED ON THE ID of the requested item
+            $data->image = $imagename;
+        }
+
+        $data->save();
+        return redirect()->back();
+    }
+  
 
   
 }
