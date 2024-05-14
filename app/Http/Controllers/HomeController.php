@@ -39,6 +39,23 @@ class HomeController extends Controller
     // a fuction opf add_product class that requests to table / db with a method of request 
     public function add_product(Request $request){
 
+        $request->validate(
+            [
+            'title' => 'required',
+            'description' => 'required',
+            'image' => 'required',
+            ],
+            [
+                'title.required' => 'title is required bro',
+                'description.required' => 'give small description bro',
+                'image.required' => 'where is your image bro',
+
+            ]
+    
+    
+    
+    );
+
         // assigning new Product (table) to $data (variable)
         $data = new Product;
 
